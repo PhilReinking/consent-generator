@@ -1,5 +1,5 @@
 <template>
-  <div class="px-6 py-8 border rounded">
+  <div>
     <p class="mb-4">
       Uns liegt deine Privatsphäre sowie die Sicherheit deiner Daten sehr am
       Herzen, weshalb wir dich hier um Erlaubnis fragen möchten, deine Angaben
@@ -8,12 +8,12 @@
 
     <div
       class="flex items-center mb-2"
-      v-for="(item, index) in config.activities"
+      v-for="(item, index) in activities"
       :key="index"
     >
       <input class="mr-4" type="checkbox" />
       <div>
-        <label class="font-bold" for="">{{ item.type }}</label>
+        <label class="font-bold" for="">{{ item.attributes }}</label>
         <p>{{ item.purpose }}</p>
       </div>
     </div>
@@ -29,32 +29,45 @@
         />
       </svg>
       <blockquote>
-        "Du kannst deine Einwilligung jederzeit widerrufen, indem du uns über
-        {{ config.contact_email }} kontaktierst. Falls du weitere Fragen zum
-        Umgang mit deinen Daten hast, dann findest du weitere Details in unserer
-        <a :href="config.privacy_url">Datenschutzerklärung</a>""
-        <footer>—{{ config.contact_name }}, {{ config.company }}</footer>
+        `Du kannst deine Einwilligung jederzeit widerrufen, indem du uns über
+        {{ email }} kontaktierst. Falls du weitere Fragen zum Umgang mit deinen
+        Daten hast, dann findest du weitere Details in unserer
+        <a :href="privacy_url">Datenschutzerklärung</a>`
+        <footer>—{{ name }}, {{ company }}</footer>
       </blockquote>
     </div>
 
-    <button
-      class="bg-gray-400 text-gray-900 px-6 py-2 border border-gray-600 text-sm font-medium leading-none"
-    >
-      I agree
-    </button>
-
-    <div class="mt-3 font-medium text-xs" v-show="config.company">
-      <span
-        ><a :href="config.legal_notice_url" target="_blank"
-          >Legal Notice</a
-        ></span
+    <span class="inline-flex rounded-md shadow-sm">
+      <button
+        type="button"
+        class="inline-flex items-center px-6 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-orange-600 hover:bg-orange-500 focus:outline-none focus:border-orange-700 focus:shadow-outline-orange active:bg-orange-700 transition ease-in-out duration-150"
       >
+        Agree & Submit
+      </button>
+    </span>
+
+    <div class="mt-2 font-medium text-xs" v-show="company">
+      <span class="mr-2"
+        ><a :href="privacy_url" target="_blank">Privacy Policy</a></span
+      >
+      <span><a :href="legal_notice_url" target="_blank">Legal Notice</a></span>
     </div>
   </div>
 </template>
 
 <script>
+import { mapState } from "vuex";
+
 export default {
-  props: ["config"]
+  computed: {
+    ...mapState([
+      "company",
+      "name",
+      "email",
+      "privacy_url",
+      "legal_notice_url",
+      "activities"
+    ])
+  }
 };
 </script>
