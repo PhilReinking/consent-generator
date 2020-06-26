@@ -13,7 +13,8 @@
     "less": "^3.11.1",
     "less-loader": "^5.0.0",
     "tailwindcss": "^1.4.0",
-    "vue": "^2.6.11"
+    "vue": "^2.6.11",
+    "vuex": "^3.4.0"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.2.0",
