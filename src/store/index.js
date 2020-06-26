@@ -7,13 +7,13 @@ const debug = process.env.NODE_ENV !== 'production'
 
 
 const state = {
-  view: 'activities',
+  view: 'editor',
 
-  company: 'Deck9',
-  name: 'Philipp Reinking',
-  email: 'privacy@deck9.co',
-  privacy_url: 'https://privacy.deck9.co',
-  legal_notice_url: 'https://deck9.co/legal_notice',
+  company: undefined,
+  name: undefined,
+  email: undefined,
+  privacy_url: undefined,
+  legal_notice_url: undefined,
 
   activities: [],
 
