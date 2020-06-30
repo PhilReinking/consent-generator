@@ -9,6 +9,8 @@ const debug = process.env.NODE_ENV !== 'production'
 const state = {
   view: 'editor',
 
+  saveOnDisk: false,
+
   company: undefined,
   name: undefined,
   email: undefined,
@@ -30,6 +32,10 @@ const mutations = {
 
   removeActivity: (state, payload) => {
     state.activities.splice(payload, 1)
+  },
+
+  toggleSave: (state) => {
+    state.saveOnDisk = !state.saveOnDisk;
   }
 };
 

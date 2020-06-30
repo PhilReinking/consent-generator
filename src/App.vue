@@ -1,10 +1,14 @@
 <template>
   <div id="app">
-    <div class="container mx-auto py-4 mb-12">
+    <div class="container mx-auto py-4 mb-16">
       <Header />
     </div>
 
-    <div class="container mx-auto py-12 flex">
+    <div class="container mx-auto ">
+      <SaveToggle />
+    </div>
+
+    <div class="container mx-auto py-8 flex">
       <Tabs class="mr-8 flex-shrink-0"></Tabs>
 
       <div
@@ -27,6 +31,7 @@
 <script>
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import SaveToggle from "./components/SaveToggle";
 import Tabs from "./components/Tabs/Tabs";
 
 import General from "./components/Panels/General.vue";
@@ -44,6 +49,7 @@ export default {
     Output,
     Header,
     Footer,
+    SaveToggle,
     Tabs
   },
   data() {
