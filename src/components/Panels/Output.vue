@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import ConsentForm from "./ConsentForm";
+import ConsentForm from "./partials/ConsentForm";
 
 export default {
   components: { ConsentForm }

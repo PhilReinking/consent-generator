@@ -11,8 +11,8 @@
         class="bg-white overflow-hidden rounded-lg w-full border border-blue-100"
       >
         <div class="px-4 py-5 sm:p-6">
-          <GenericInformation v-if="view === 'editor'" />
-          <ProcessingActivities v-if="view === 'activities'" />
+          <General v-if="view === 'editor'" />
+          <Activities v-if="view === 'activities'" />
           <Output v-if="view === 'output'" />
         </div>
       </div>
@@ -27,11 +27,11 @@
 <script>
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import Tabs from "./components/Tabs";
+import Tabs from "./components/Tabs/Tabs";
 
-import GenericInformation from "./components/GenericInformation.vue";
-import ProcessingActivities from "./components/ProcessingActivities.vue";
-import Output from "./components/Output.vue";
+import General from "./components/Panels/General.vue";
+import Activities from "./components/Panels/Activities.vue";
+import Output from "./components/Panels/Output.vue";
 
 import { mapState } from "vuex";
 
@@ -39,8 +39,8 @@ export default {
   name: "App",
 
   components: {
-    GenericInformation,
-    ProcessingActivities,
+    General,
+    Activities,
     Output,
     Header,
     Footer,

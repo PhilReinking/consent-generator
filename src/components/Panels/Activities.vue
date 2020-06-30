@@ -24,8 +24,8 @@
 </template>
 
 <script>
-import TemplateSelection from "./TemplateSelection";
-import ActivityItem from "./ActivityItem";
+import TemplateSelection from "./partials/TemplateSelection";
+import ActivityItem from "./partials/ActivityItem";
 import { mapState } from "vuex";
 
 export default {
