@@ -5,18 +5,12 @@
         Output
       </h3>
       <p class="mt-1 text-sm leading-5 text-gray-500">
-        You need to provide this information, to make it easy for others find
-        out more about you or to contact you.
+        Copy this text into your form. Make sure that the right checkboxes are
+        checked before using data for a purpose.
       </p>
     </div>
     <div class="max-w-xl py-8">
-      <img
-        style="width: 100%; max-width: 420px;"
-        src="/images/form-dummy.png"
-        alt="Form Dummy"
-      />
-
-      <ConsentForm class="mt-4" />
+      <ConsentForm class="mt-4 mx-auto max-w-md" />
     </div>
   </div>
 </template>

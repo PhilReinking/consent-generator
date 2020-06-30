@@ -43,7 +43,7 @@
         </a>
       </div>
       <div class="mt-8 md:mt-0 md:order-1">
-        <p class="text-center text-base leading-6 text-gray-600">
+        <p class="text-center text-sm leading-6 text-gray-600">
           The content of this site is licensed under <i>MIT License</i>
         </p>
       </div>
