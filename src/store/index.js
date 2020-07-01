@@ -1,13 +1,12 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
+import Vue from "vue";
+import Vuex from "vuex";
 
-Vue.use(Vuex)
+Vue.use(Vuex);
 
-const debug = process.env.NODE_ENV !== 'production'
-
+const debug = process.env.NODE_ENV !== "production";
 
 const state = {
-  view: 'editor',
+  view: "editor",
 
   saveOnDisk: false,
 
@@ -28,6 +27,15 @@ const mutations = {
 
   addActivity: (state, payload) => {
     state.activities.push(payload);
+  },
+
+  INIT_STORE: (state) => {
+    for (let prop in state) {
+      let item = localStorage.getItem(prop);
+      if (item) {
+        state[prop] = item;
+      }
+    }
   },
 
   removeActivity: (state, payload) => {
