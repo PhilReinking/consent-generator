@@ -44,7 +44,7 @@ export default {
 
   methods: {
     toggleSave() {
-      this.$store.dispatch("toggleSave");
+      this.$store.commit("toggleSave");
     },
   },
 };

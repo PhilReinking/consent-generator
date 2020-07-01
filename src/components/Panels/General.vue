@@ -120,23 +120,23 @@ export default {
   },
   methods: {
     setCompany(event) {
-      this.dispatch("setCompany", event);
+      this.updateValue("setCompany", event);
     },
     setName(event) {
-      this.dispatch("setName", event);
+      this.updateValue("setName", event);
     },
     setEmail(event) {
-      this.dispatch("setEmail", event);
+      this.updateValue("setEmail", event);
     },
     setPrivacyUrl(event) {
-      this.dispatch("setPrivacyUrl", event);
+      this.updateValue("setPrivacyUrl", event);
     },
     setLegalNoticeUrl(event) {
-      this.dispatch("setLegalNoticeUrl", event);
+      this.updateValue("setLegalNoticeUrl", event);
     },
 
-    dispatch(action, event) {
-      this.$store.dispatch(action, event.target.value);
+    updateValue(mutation, event) {
+      this.$store.commit(mutation, event.target.value);
     },
   },
 };

@@ -49,7 +49,7 @@ export default {
 
   methods: {
     add() {
-      this.$store.dispatch("addActivity", this.selected);
+      this.$store.commit("addActivity", this.selected);
       this.selected = "";
     },
   },

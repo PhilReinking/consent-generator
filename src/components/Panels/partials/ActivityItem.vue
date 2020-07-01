@@ -49,7 +49,7 @@ export default {
 
   methods: {
     removeItem() {
-      this.$store.dispatch("removeActivity", this.index);
+      this.$store.commit("removeActivity", this.index);
     },
   },
 };
