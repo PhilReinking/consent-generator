@@ -25,6 +25,7 @@
             type="text"
             :value="company"
             class="form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5"
+            @change="setCompany"
           />
         </div>
       </div>
@@ -41,6 +42,7 @@
             id="name"
             :value="name"
             class="form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5"
+            @change="setName"
           />
         </div>
       </div>
@@ -58,6 +60,7 @@
             type="email"
             :value="email"
             class="form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5"
+            @change="setEmail"
           />
         </div>
       </div>
@@ -75,6 +78,7 @@
             type="url"
             :value="privacy_url"
             class="form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5"
+            @change="setPrivacyUrl"
           />
         </div>
       </div>
@@ -92,6 +96,7 @@
             type="url"
             :value="legal_notice_url"
             class="form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5"
+            @change="setLegalNoticeUrl"
           />
         </div>
       </div>
@@ -105,7 +110,34 @@ import { mapState } from "vuex";
 
 export default {
   computed: {
-    ...mapState(["company", "name", "email", "privacy_url", "legal_notice_url"])
-  }
+    ...mapState([
+      "company",
+      "name",
+      "email",
+      "privacy_url",
+      "legal_notice_url",
+    ]),
+  },
+  methods: {
+    setCompany(event) {
+      this.dispatch("setCompany", event);
+    },
+    setName(event) {
+      this.dispatch("setName", event);
+    },
+    setEmail(event) {
+      this.dispatch("setEmail", event);
+    },
+    setPrivacyUrl(event) {
+      this.dispatch("setPrivacyUrl", event);
+    },
+    setLegalNoticeUrl(event) {
+      this.dispatch("setLegalNoticeUrl", event);
+    },
+
+    dispatch(action, event) {
+      this.$store.dispatch(action, event.target.value);
+    },
+  },
 };
 </script>

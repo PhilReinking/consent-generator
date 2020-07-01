@@ -49,8 +49,8 @@ export default {
 
   methods: {
     removeItem() {
-      this.$store.commit("removeActivity", this.index);
-    }
-  }
+      this.$store.dispatch("removeActivity", this.index);
+    },
+  },
 };
 </script>
