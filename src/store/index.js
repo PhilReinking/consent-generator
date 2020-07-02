@@ -4,6 +4,10 @@ import Vuex from "vuex";
 Vue.use(Vuex);
 
 const debug = process.env.NODE_ENV !== "production";
+const LOCAL_STORAGE_KEY = "gdpr-consent-generator.com";
+
+// check if a config exists in local storage
+const storedConfig = JSON.parse(window.localStorage.getItem(LOCAL_STORAGE_KEY)) || {};
 
 const state = {
   view: "editor",
@@ -17,9 +21,10 @@ const state = {
   legal_notice_url: undefined,
 
   activities: [],
-};
 
-const LOCAL_STORAGE_KEY = "consent-storage";
+  // merge loaded config with default settings
+  ...storedConfig
+};
 
 const mutations = {
   setView: (state, payload) => {
@@ -28,6 +33,11 @@ const mutations = {
 
   toggleSave: (state) => {
     state.saveOnDisk = !state.saveOnDisk;
+
+    // remove saved config, if turned off
+    if (!state.saveOnDisk) {
+      localStorage.removeItem(LOCAL_STORAGE_KEY);
+    }    
   },
 
   setCompany: (state, payload) => {
@@ -52,16 +62,6 @@ const mutations = {
   removeActivity: (state, payload) => {
     state.activities.splice(payload, 1);
   },
-
-  initStore: (state) => {
-    let storedState = localStorage.getItem(LOCAL_STORAGE_KEY);
-    if (storedState) {
-      storedState = JSON.parse(storedState);
-      for (let prop in storedState) {
-        state[prop] = storedState[prop];
-      }
-    }
-  },
 };
 
 let store = new Vuex.Store({
@@ -74,8 +74,6 @@ let store = new Vuex.Store({
 store.subscribe((mutation, state) => {
   if (state.saveOnDisk) {
     localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(state));
-  } else {
-    localStorage.removeItem(LOCAL_STORAGE_KEY);
   }
 });
 
