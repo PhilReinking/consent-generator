@@ -1,15 +1,10 @@
 <template>
   <form>
     <!-- Start Generic Form here -->
-    <div>
-      <h3 class="text-lg leading-6 font-medium text-gray-900">
-        General Information
-      </h3>
-      <p class="mt-1 text-sm leading-5 text-gray-500">
-        You need to provide this information, to make it easy for others find
-        out more about you or to contact you.
-      </p>
-    </div>
+    <PanelHeader
+      title="General Information"
+      description="You need to provide this information, to make it easy for others find out more about you or to contact you."
+    />
 
     <div class="mt-6 grid grid-cols-1 row-gap-6 col-gap-4 sm:grid-cols-6">
       <div class="sm:col-span-4">
@@ -107,11 +102,17 @@
 
 <script>
 import { mapState, mapMutations } from "vuex";
+import PanelHeader from "./partials/PanelHeader";
 
 export default {
+  components: {
+    PanelHeader
+  },
+
   computed: {
     ...mapState(["company", "name", "email", "privacy_url", "legal_notice_url"])
   },
+
   methods: {
     ...mapMutations([
       "setCompany",

@@ -10,8 +10,6 @@ const LOCAL_STORAGE_KEY = "gdpr-consent-generator.com";
 const storedConfig = JSON.parse(window.localStorage.getItem(LOCAL_STORAGE_KEY)) || {};
 
 const state = {
-  view: "editor",
-
   saveOnDisk: false,
 
   company: undefined,
@@ -23,7 +21,9 @@ const state = {
   activities: [],
 
   // merge loaded config with default settings
-  ...storedConfig
+  ...storedConfig,
+
+  view: "editor",
 };
 
 const mutations = {
