@@ -13,8 +13,9 @@
 
 <script>
 import ConsentForm from "./partials/ConsentForm";
+import PanelHeader from "./partials/PanelHeader";
 
 export default {
-  components: { ConsentForm }
+  components: { ConsentForm, PanelHeader }
 };
 </script>

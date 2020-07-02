@@ -22,12 +22,14 @@
 <script>
 import TemplateSelection from "./partials/TemplateSelection";
 import ActivityItem from "./partials/ActivityItem";
+import PanelHeader from "./partials/PanelHeader";
 import { mapState } from "vuex";
 
 export default {
   components: {
     TemplateSelection,
-    ActivityItem
+    ActivityItem,
+    PanelHeader
   },
   computed: {
     ...mapState(["activities"])
