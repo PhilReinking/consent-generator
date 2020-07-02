@@ -25,7 +25,7 @@
             type="text"
             :value="company"
             class="form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5"
-            @change="setCompany"
+            @change="setCompany($event.target.value)"
           />
         </div>
       </div>
@@ -42,7 +42,7 @@
             id="name"
             :value="name"
             class="form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5"
-            @change="setName"
+            @change="setName($event.target.value)"
           />
         </div>
       </div>
@@ -60,7 +60,7 @@
             type="email"
             :value="email"
             class="form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5"
-            @change="setEmail"
+            @change="setEmail($event.target.value)"
           />
         </div>
       </div>
@@ -78,7 +78,7 @@
             type="url"
             :value="privacy_url"
             class="form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5"
-            @change="setPrivacyUrl"
+            @change="setPrivacyUrl($event.target.value)"
           />
         </div>
       </div>
@@ -96,7 +96,7 @@
             type="url"
             :value="legal_notice_url"
             class="form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5"
-            @change="setLegalNoticeUrl"
+            @change="setLegalNoticeUrl($event.target.value)"
           />
         </div>
       </div>
@@ -106,38 +106,20 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
+import { mapState, mapMutations } from "vuex";
 
 export default {
   computed: {
-    ...mapState([
-      "company",
-      "name",
-      "email",
-      "privacy_url",
-      "legal_notice_url",
-    ]),
+    ...mapState(["company", "name", "email", "privacy_url", "legal_notice_url"])
   },
   methods: {
-    setCompany(event) {
-      this.updateValue("setCompany", event);
-    },
-    setName(event) {
-      this.updateValue("setName", event);
-    },
-    setEmail(event) {
-      this.updateValue("setEmail", event);
-    },
-    setPrivacyUrl(event) {
-      this.updateValue("setPrivacyUrl", event);
-    },
-    setLegalNoticeUrl(event) {
-      this.updateValue("setLegalNoticeUrl", event);
-    },
-
-    updateValue(mutation, event) {
-      this.$store.commit(mutation, event.target.value);
-    },
-  },
+    ...mapMutations([
+      "setCompany",
+      "setName",
+      "setEmail",
+      "setPrivacyUrl",
+      "setLegalNoticeUrl"
+    ])
+  }
 };
 </script>
