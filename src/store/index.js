@@ -59,6 +59,9 @@ const mutations = {
   addActivity: (state, payload) => {
     state.activities.push(payload);
   },
+  updateActivity: (state, payload) => {
+    state.activities[payload.index] = payload.item;
+  },
   removeActivity: (state, payload) => {
     state.activities.splice(payload, 1);
   },
