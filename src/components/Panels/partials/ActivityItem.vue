@@ -3,7 +3,7 @@
     <button
       type="button"
       class="absolute px-4 py-2 right-0 text-gray-200 text-xs top-0 underline focus:outline-none"
-      @click="removeItem"
+      @click="removeActivity(index)"
     >
       remove
     </button>
@@ -20,6 +20,8 @@
           class="form-input block w-full sm:text-sm sm:leading-5 border-none bg-gray-800 text-gray-100"
           placeholder="you@example.com"
           :value="item.attributes"
+          ref="attributes"
+          @change="update"
         />
       </div>
     </div>
@@ -36,7 +38,9 @@
           id="about"
           rows="3"
           class="form-textarea block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5 border-none bg-gray-800 text-gray-100"
+          ref="purpose"
           :value="item.purpose"
+          @change="update"
         ></textarea>
       </div>
     </div>
@@ -44,13 +48,23 @@
 </template>
 
 <script>
+import { mapMutations } from "vuex";
+
 export default {
   props: ["item", "index"],
 
   methods: {
-    removeItem() {
-      this.$store.commit("removeActivity", this.index);
-    }
+    update() {
+      this.updateActivity({
+        index: this.index,
+        item: {
+          ...this.item,
+          attributes: this.$refs.attributes.value,
+          purpose: this.$refs.purpose.value
+        }
+      });
+    },
+    ...mapMutations(["removeActivity", "updateActivity"])
   }
 };
 </script>

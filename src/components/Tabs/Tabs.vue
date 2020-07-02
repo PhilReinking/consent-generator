@@ -30,7 +30,7 @@ export default {
   methods: {
     setView(target) {
       this.$store.commit("setView", target);
-    }
-  }
+    },
+  },
 };
 </script>

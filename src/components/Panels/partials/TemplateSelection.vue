@@ -35,15 +35,15 @@ const TEMPLATES = [
     name: "Email Marketing",
     attributes: "Email Address",
     purpose:
-      "We sent you product updates, tutorials and offers related to our product."
-  }
+      "We sent you product updates, tutorials and offers related to our product.",
+  },
 ];
 
 export default {
   data() {
     return {
       templates: TEMPLATES,
-      selected: ""
+      selected: "",
     };
   },
 
@@ -51,7 +51,7 @@ export default {
     add() {
       this.$store.commit("addActivity", this.selected);
       this.selected = "";
-    }
-  }
+    },
+  },
 };
 </script>

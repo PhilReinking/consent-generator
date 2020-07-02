@@ -1,15 +1,10 @@
 <template>
   <form>
     <!-- Start Generic Form here -->
-    <div>
-      <h3 class="text-lg leading-6 font-medium text-gray-900">
-        General Information
-      </h3>
-      <p class="mt-1 text-sm leading-5 text-gray-500">
-        You need to provide this information, to make it easy for others find
-        out more about you or to contact you.
-      </p>
-    </div>
+    <PanelHeader
+      title="General Information"
+      description="You need to provide this information, to make it easy for others find out more about you or to contact you."
+    />
 
     <div class="mt-6 grid grid-cols-1 row-gap-6 col-gap-4 sm:grid-cols-6">
       <div class="sm:col-span-4">
@@ -25,6 +20,7 @@
             type="text"
             :value="company"
             class="form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5"
+            @change="setCompany($event.target.value)"
           />
         </div>
       </div>
@@ -41,6 +37,7 @@
             id="name"
             :value="name"
             class="form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5"
+            @change="setName($event.target.value)"
           />
         </div>
       </div>
@@ -58,6 +55,7 @@
             type="email"
             :value="email"
             class="form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5"
+            @change="setEmail($event.target.value)"
           />
         </div>
       </div>
@@ -75,6 +73,7 @@
             type="url"
             :value="privacy_url"
             class="form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5"
+            @change="setPrivacyUrl($event.target.value)"
           />
         </div>
       </div>
@@ -92,6 +91,7 @@
             type="url"
             :value="legal_notice_url"
             class="form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5"
+            @change="setLegalNoticeUrl($event.target.value)"
           />
         </div>
       </div>
@@ -101,11 +101,26 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
+import { mapState, mapMutations } from "vuex";
+import PanelHeader from "./partials/PanelHeader";
 
 export default {
+  components: {
+    PanelHeader
+  },
+
   computed: {
     ...mapState(["company", "name", "email", "privacy_url", "legal_notice_url"])
+  },
+
+  methods: {
+    ...mapMutations([
+      "setCompany",
+      "setName",
+      "setEmail",
+      "setPrivacyUrl",
+      "setLegalNoticeUrl"
+    ])
   }
 };
 </script>

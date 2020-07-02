@@ -12,7 +12,7 @@
       <!-- On: "translate-x-5", Off: "translate-x-0" -->
       <span
         aria-hidden="true"
-        class=" inline-block h-5 w-5 rounded-full bg-white shadow transform transition ease-in-out duration-200"
+        class="inline-block h-5 w-5 rounded-full bg-white shadow transform transition ease-in-out duration-200"
         :class="saveOnDisk ? 'translate-x-5' : 'translate-x-0'"
       ></span>
     </span>
@@ -39,13 +39,13 @@ import { mapState } from "vuex";
 
 export default {
   computed: {
-    ...mapState(["saveOnDisk"])
+    ...mapState(["saveOnDisk"]),
   },
 
   methods: {
     toggleSave() {
       this.$store.commit("toggleSave");
-    }
-  }
+    },
+  },
 };
 </script>
